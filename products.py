@@ -1,13 +1,19 @@
-# 讀取檔案
+# 檢查檔案是否存在
+import os # 作業系統模組
 products = []
-with open('products.csv', 'r', encoding = 'utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue # 繼續
-		name, price = line.strip().split(',') # strip 清除空格 \n # split 分割 # 直接存入name與price變數中
-		products.append([name, price])
-print(products)
-
+if os.file.isfile('products.csv'):
+	print('檔案存在')
+	# 讀取檔案
+	with open('products.csv', 'r', encoding = 'utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue # 繼續
+			name, price = line.strip().split(',') # strip 清除空格 \n # split 分割 # 直接存入name與price變數中
+			products.append([name, price])
+	print(products)
+else:
+	print('找不到檔案')
+	
 # 使用者輸入
 while True:
 	name = input('請輸入商品名稱: ')
